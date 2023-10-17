@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  mockbin:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - MOCKBIN_REDIS=redis://redis:6379
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
